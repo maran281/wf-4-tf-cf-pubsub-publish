@@ -10,7 +10,7 @@ def publish_message(request):
     publisher = pubsub_v1.PublisherClient()
 
     #Create a topic name
-    topic_path = publisher.topic_path("", topic_name)
+    topic_path = publisher.topic_path("manojproject1-396309", "pubsubmy_topic1")
 
     #publish message to a topic
     future = publisher.publish(topic_path, data=message_data.encode("utf-8"))
