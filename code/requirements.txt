@@ -1,3 +1,2 @@
-json
 google-cloud-pubsub
 functions-framework
