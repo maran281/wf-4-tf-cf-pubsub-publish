@@ -5,18 +5,26 @@ from google.cloud import pubsub_v1
 
 def publish_message(request):
     #get the incoming data from http request
+    print("Debug 1")
     request_json = request.get_json
+    print("Debug 2")
     topic_name = request_json.get("topic", "default topic name")
+    print("Debug 3")
     message_data = request_json.get("message","default message content")
+    print("Debug 4")
 
     #Create a pub/sub client
     publisher = pubsub_v1.PublisherClient()
+    print("Debug 5")
 
     #Create a topic name
     topic_path = publisher.topic_path("manojproject1-396309", "pubsubmy_topic1")
+    print("Debug 6")
 
     #publish message to a topic
     future = publisher.publish(topic_path, data=message_data.encode("utf-8"))
+    print("Debug 7")
     message_id = future.result
+    print("Debug 8")
     
     return f"Message {message_id} is published to topic {topic_name}"
