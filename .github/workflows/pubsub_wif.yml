@@ -8,9 +8,16 @@ on:
 jobs:
     deploy_my_cf_4_pubsub:
         runs-on: ubuntu-latest
+        
         permissions: 
-            contents: 'read'
-            id-token: 'write'
+            #below code gives permission to workfliow to read the content of the repositories
+            #actions/checkout@v3 wouldnt work without this permission. by default its 'read'
+              contents: 'read'
+            #below code is used to authorize the workflow to perform write actions, such as 
+            #initializing and applying changes using Terraform. It's particularly important 
+            #when interacting with external services or APIs, like Google Cloud, where the 
+            #workflow needs to authenticate and make changes.
+              id-token: 'write'
 
         steps:
             - name: checkout my code
@@ -19,4 +26,22 @@ jobs:
             - id: 'auth'
               name: 'authenticate manoj google project'
               uses: 'google-github-actions/auth@v1'
+              with:
+                  token_format: 'access_token'
+                  workload_identity_provider: 'projects/768624397534/locations/global/workloadIdentityPools/mypoolid4/providers/myproviderid4'
+                  service_account: my-cloudfunction-sa@manojproject1-396309.iam.gserviceaccount.com
+
+            #Below step is to initialize cloud SDK
+            - name: 'Setup my cloud SDK'
+              uses: 'google-github-actions/setup-gcloud@v1'
+            
+            - name: 'Initialize the terraform'
+              run: |
+                cd terraform
+
+                terraform init
+                terraform apply -auto-approve
+                terraform taint google_cloudfunctions_function.tf_cloud_funct
+ #               terraform destroy -target=google_storage_bucket.source_bucket_4_cf2 -auto-approve          
+
               
