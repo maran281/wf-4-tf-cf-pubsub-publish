@@ -1,3 +1,5 @@
+import os
+import json
 import functions_framework
 from google.cloud import pubsub_v1
 
@@ -6,8 +8,10 @@ from google.cloud import pubsub_v1
 def publish_message(request):
     #get the incoming data from http request
     print("Debug 1")
-    request_json = request.get_json
+    request_json = request.get_json()
     print("Debug 2")
+    print(request_json)
+    print("Debug 9")
     topic_name = request_json.get("topic", "default topic name")
     print("Debug 3")
     message_data = request_json.get("message","default message content")
