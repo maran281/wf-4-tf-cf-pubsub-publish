@@ -70,7 +70,7 @@ resource "google_pubsub_subscription" "mysubscription1" {
       
       trigger_http = true
       timeout = 60
-      entry_point = "hello_world"
+      entry_point = "publish_message"
   
       /* depends_on = [ google_storage_bucket_object.tf_bucket_object ] */
   }
