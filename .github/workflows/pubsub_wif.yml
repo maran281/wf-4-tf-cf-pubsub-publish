@@ -1,3 +1,5 @@
+#explaination: https://medium.com/google-cloud/how-does-the-gcp-workload-identity-federation-work-with-github-provider-a9397efd7158
+
 name: "Deploy pubsub code for CF"
 
 on: 
@@ -13,10 +15,7 @@ jobs:
             #below code gives permission to workfliow to read the content of the repositories
             #actions/checkout@v3 wouldnt work without this permission. by default its 'read'
               contents: 'read'
-            #below code is used to authorize the workflow to perform write actions, such as 
-            #initializing and applying changes using Terraform. It's particularly important 
-            #when interacting with external services or APIs, like Google Cloud, where the 
-            #workflow needs to authenticate and make changes.
+            #use of below property will be explained while explaining 'google-github-actions/auth@v1'
               id-token: 'write'
 
         steps:
@@ -25,6 +24,7 @@ jobs:
 
             - id: 'auth'
               name: 'authenticate manoj google project'
+              #in below step githubaction is calling oidc provider to get the oidc token. to get the oidc token it must have permission to make an API call against OIDC provider and thats where  "id-token:write" property is used.
               uses: 'google-github-actions/auth@v1'
               with:
                   token_format: 'access_token'
