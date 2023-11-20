@@ -4,7 +4,7 @@ import functions_framework
 from google.cloud import pubsub_v1
 
 @functions_framework.http
-
+ 
 def publish_message(request):
     #get the incoming data from http request
     print("Debug 1")
