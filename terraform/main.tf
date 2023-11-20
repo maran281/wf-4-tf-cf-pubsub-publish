@@ -18,7 +18,7 @@ resource "google_project_iam_binding" "service_account_roles" {
 
 resource "google_pubsub_topic" "pubsubtopic1" {
     name = "pubsubmy_topic1"
-  
+
 }
 
 /* Below is the pull suibscription which is a default behaviour. 
