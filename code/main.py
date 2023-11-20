@@ -22,7 +22,7 @@ def publish_message(request):
     print("Debug 5")
 
     #Create a topic name
-    topic_path = publisher.topic_path("manojproject1-396309", "pubsubmy_topic1")
+    topic_path = publisher.topic_path("plated-hash-405319", "pubsubmy_topic1")
     print("Debug 6")
 
     #publish message to a topic
