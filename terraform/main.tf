@@ -79,6 +79,8 @@ resource "google_pubsub_subscription" "mysubscription1" {
     cloud_function = google_cloudfunctions_function.tf_cloud_funct.name
     role = "roles/cloudfunctions.invoker"
     member = "allUsers"
+
+    depends_on = [ google_cloudfunctions_function.tf_cloud_funct ]
   }
   
   #comment
