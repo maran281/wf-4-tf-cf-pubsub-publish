@@ -1,15 +1,15 @@
 provider "google" {
-    project = "manojproject1-396309"
+    project = "plated-hash-405319"
     region = "us-east1"
 }
 
 /* resource "google_service_account" "my-pubsub-sa" {
     display_name = "my-pubsub-sa"
-    account_id = "my-pubsub-sa@manojproject1-396309.iam.gserviceaccount.com"
+    account_id = "my-pubsub-sa@plated-hash-405319.iam.gserviceaccount.com"
 }
 
 resource "google_project_iam_binding" "service_account_roles" {
-    project = "manojproject1-396309" 
+    project = "plated-hash-405319" 
 
     role = "roles/pubsub.publisher"
     members = [ "serviceAccount:${google_service_account.my-pubsub-sa.email}" ]
@@ -32,8 +32,8 @@ resource "google_pubsub_subscription" "mysubscription1" {
 }
   terraform {
     backend "gcs" {
-      bucket = "terraform_state4_pubsub_poc"   
-      prefix = "terraform_state4_pubsub_poc"
+      bucket = "terraform_state4_pubsub_poc1"   
+      prefix = "terraform_state4_pubsub_poc1"
     }
   }
    
@@ -52,7 +52,7 @@ resource "google_pubsub_subscription" "mysubscription1" {
   
   #This bucket will contain the code file which will be used as cloud function code
   resource "google_storage_bucket" "tf_storage_bucket" {
-    name = "cfpubsub_poc_code_bucket"
+    name = "cfpubsub_poc_code_bucket1"
     location = "us-east1"
   }
   
