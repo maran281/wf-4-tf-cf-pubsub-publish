@@ -28,8 +28,8 @@ jobs:
               uses: 'google-github-actions/auth@v1'
               with:
                   token_format: 'access_token'
-                  workload_identity_provider: 'projects/768624397534/locations/global/workloadIdentityPools/mypoolid4/providers/myproviderid4'
-                  service_account: my-pubsub-sa@manojproject1-396309.iam.gserviceaccount.com
+                  workload_identity_provider: 'projects/582799354522/locations/global/workloadIdentityPools/mypoolid-3/providers/myproviderid-3'
+                  service_account: my-pubsub-sa@plated-hash-405319.iam.gserviceaccount.com
 
             #Below step is to initialize cloud SDK
             - name: 'Setup my cloud SDK'
