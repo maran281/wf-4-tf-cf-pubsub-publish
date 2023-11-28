@@ -57,9 +57,9 @@ resource "google_pubsub_subscription" "mysubscription1" {
   }
   
   resource "google_storage_bucket_object" "tf_bucket_object" {
-    name = "main.zip"
+    name = "main2.zip"
     bucket = google_storage_bucket.tf_storage_bucket.name
-    source = "../code/main.zip"
+    source = "../code/main1.zip"
   }
   
   resource "google_cloudfunctions_function" "tf_cloud_funct" {
